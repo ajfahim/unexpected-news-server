@@ -16,8 +16,10 @@ app.get("/categories", (req, res) => {
     res.send(categories);
 })
 
-app.get("/news", (req, res) => {
-    res.send(news)
+app.get("/news/:id", (req, res) => {
+    const id = req.params.id
+    const newsCategory = news.filter(n => n._id === id)
+    res.send(newsCategory);
 })
 
 app.listen(port, () => {
